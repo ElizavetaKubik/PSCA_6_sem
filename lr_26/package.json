@@ -1,0 +1,17 @@
+{
+  "name": "lr_26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app1": "nodemon 26-01s.js",
+    "app2": "nodemon 26-02s.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}

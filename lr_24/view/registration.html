@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript" src="js/index.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="register-form">
+        <input
+          type="text"
+          placeholder="Enter username"
+          name="username"
+          maxlength="20"
+          autocomplete="off"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Enter email"
+          name="email"
+          maxlength="30"
+          autocomplete="off"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          name="password"
+          maxlength="20"
+          required
+        />
+
+        <button id="registerBtn" onclick="register()">Sign up</button>
+        <button type="reset" onclick="window.location.href='/login'">
+          Login
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

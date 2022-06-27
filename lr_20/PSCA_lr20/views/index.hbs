@@ -1,0 +1,11 @@
+<div class="directory-group list">
+  <div class="list-container">
+    {{#each numbers}}
+      {{>record}}
+    {{/each}}
+  </div>
+</div>
+
+<div class="directory-group control">
+  <a onclick="window.location.href = '/add'">Add new number</a>
+</div>

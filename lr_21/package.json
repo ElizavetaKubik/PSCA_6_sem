@@ -1,0 +1,19 @@
+{
+  "name": "lr_21",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app1": "nodemon basic.js",
+    "app2": "nodemon digest.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-http": "^0.3.0"
+  }
+}

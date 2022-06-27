@@ -1,0 +1,17 @@
+<div class="record-container" data-key="{{id}}">
+  <table class="record">
+    <tr>
+      <td>
+          <a {{#if @root.unlocked}}
+            onclick="window.location.href='/update?id={{id}}'"{{/if}}>
+            {{surname}}</a>
+      </td>
+
+      <td>
+          <a {{#if @root.unlocked}}
+            onclick="window.location.href='/update?id={{id}}'"{{/if}}>
+            {{number}}</a>
+      </td>
+    </tr>
+  </table>
+</div>

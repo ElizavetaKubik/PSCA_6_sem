@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>29-02</title>
+  </head>
+  <body>
+    <p>sum(3,6) = <span id="rsum"></span></p>
+    <p>sub(3,6) = <span id="rsub"></span></p>
+    <p>mul(3,6) = <span id="rmul"></span></p>
+    <p>div(3,6) = <span id="rdiv"></span></p>
+    <script>
+      (async () => {
+        const wasmCode = fetch("/p.wasm");
+        const { instance } = await WebAssembly.instantiateStreaming(wasmCode);
+        rsum.innerHTML = instance.exports.sum(3, 6);
+        rsub.innerHTML = instance.exports.sub(3, 6);
+        rmul.innerHTML = instance.exports.mul(3, 6);
+        rdiv.innerHTML = instance.exports.div(3, 6);
+      })();
+    </script>
+  </body>
+</html>

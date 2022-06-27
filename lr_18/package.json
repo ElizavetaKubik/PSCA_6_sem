@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "sequelize": "^6.16.1",
+    "tedious": "^14.3.0"
+  },
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}

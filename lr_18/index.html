@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CRUD</title>
+
+    <style>
+      body {
+        width: 80%;
+        margin: auto;
+      }
+
+      body > div > table {
+        width: 80%;
+        margin: auto;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table.list {
+        width: 100%;
+      }
+
+      td,
+      th {
+        text-align: left;
+        /*pargin: 3px;*/
+        padding: 8px;
+      }
+      /* 
+      tr:nth-child(even),
+      table.list thead > tr {
+        background-color: rgb(156, 193, 196);
+      } */
+
+      input[type="text"],
+      input[type="number"],
+      input[type="date"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid rgb(156, 193, 196);
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 32%;
+        background-color: rgb(156, 193, 196);
+        color: rgb(19, 14, 14);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      a {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #0000ee;
+        margin-right: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <label>Pulpit</label>
+        <input type="text" name="pulpit" id="pulpit" />
+      </div>
+      <div>
+        <label>Pulpit Name</label>
+        <input type="text" name="pulpit_name" id="pulpit_name" />
+      </div>
+      <div>
+        <label>Faculty</label>
+        <input type="text" name="faculty" id="faculty" />
+      </div>
+      <div>
+        <button onclick="Get()">Get</button>
+        <button onclick="Post()">Post</button>
+        <button onclick="Put()">Put</button>
+      </div>
+    </div>
+
+    <div>
+      <table>
+        <tr>
+          <td>
+            <table class="list" id="pulpitList">
+              <thead>
+                <tr>
+                  <th>Pulpit</th>
+                  <th>Pulpit Name</th>
+                  <th>Faculty</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      function Get() {
+        var table = document
+          .getElementById("pulpitList")
+          .getElementsByTagName("tbody")[0];
+        table.innerHTML = "";
+        fetch("http://localhost:3000/api/pulpits", {
+          method: "GET",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json",
+          },
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((pdata) => {
+            pdata.forEach((element) => {
+              var table = document
+                .getElementById("pulpitList")
+                .getElementsByTagName("tbody")[0];
+              var newRow = table.insertRow(table.length);
+              cell1 = newRow.insertCell(0);
+              cell1.innerHTML = element.pulpit;
+              cell2 = newRow.insertCell(1);
+              cell2.innerHTML = element.pulpit_name;
+              cell3 = newRow.insertCell(2);
+              cell3.innerHTML = element.faculty;
+              cell3 = newRow.insertCell(3);
+              cell3.innerHTML = `<a style = "text-decoration: none; font-size: 8pt; color: rgb(49,49,49)" onClick="Edit(this)">Edit</a>
+                                       <a style = "text-decoration: none; font-size: 8pt; color: rgb(49,49,49)" onClick="Delete(this)">Delete</a>`;
+            });
+          });
+      }
+
+      function Post() {
+        var table = document
+          .getElementById("pulpitList")
+          .getElementsByTagName("tbody")[0];
+        table.innerHTML = "";
+        fetch("http://localhost:3000/api/pulpits", {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            pulpit: document.getElementById("pulpit").value,
+            pulpit_name: document.getElementById("pulpit_name").value,
+            faculty: document.getElementById("faculty").value,
+          }),
+        }).then((res) => {
+          Get();
+        });
+
+        document.getElementById("pulpit").value = "";
+        document.getElementById("pulpit_name").value = "";
+        document.getElementById("faculty").value = "";
+        Get();
+      }
+
+      function Edit(td) {
+        selectedRow = td.parentElement.parentElement;
+        console.log(selectedRow);
+        document.getElementById("pulpit").value =
+          selectedRow.cells[0].innerHTML;
+        document.getElementById("pulpit_name").value =
+          selectedRow.cells[1].innerHTML;
+        document.getElementById("faculty").value =
+          selectedRow.cells[2].innerHTML;
+      }
+
+      function Put() {
+        var table = document
+          .getElementById("pulpitList")
+          .getElementsByTagName("tbody")[0];
+        table.innerHTML = "";
+        fetch("http://localhost:3000/api/pulpits", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            pulpit: document.getElementById("pulpit").value,
+            pulpit_name: document.getElementById("pulpit_name").value,
+            faculty: document.getElementById("faculty").value,
+          }),
+        }).then(() => {
+          Get();
+        });
+        document.getElementById("pulpit").value = "";
+        document.getElementById("pulpit_name").value = "";
+        document.getElementById("faculty").value = "";
+      }
+
+      function Delete(td) {
+        var table = document
+          .getElementById("pulpitList")
+          .getElementsByTagName("tbody")[0];
+        table.innerHTML = "";
+        var del = td.parentElement.parentElement.cells[0].innerHTML;
+        fetch("http://localhost:3000/api/pulpits/" + del, {
+          method: "DELETE",
+          mode: "cors",
+          headers: { "Content-Type": "application/json" },
+        }).then((pdata) => {
+          Get();
+        });
+        document.getElementById("pulpit").value = "";
+        document.getElementById("pulpit_name").value = "";
+        document.getElementById("faculty").value = "";
+      }
+    </script>
+  </body>
+</html>

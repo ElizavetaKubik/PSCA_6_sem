@@ -1,0 +1,24 @@
+{
+  "name": "lr_20",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "nodemon index.js",
+    "start": "node index.js",
+    "heroku-prebuild": "echo before inst",
+    "heroku-postbuild": "echo after inst"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "16.7.0",
+    "npm": "7.20.3"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "faculty": "test1",
+    "faculty_name":"test1"
+}
+
+{
+    "pulpit": "test1",
+    "pulpit_name":"test1",
+    "faculty":"TOV"
+}

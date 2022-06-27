@@ -1,0 +1,21 @@
+<div class="directory-group list">
+    <div class="list-container">
+        {{#each numbers}}
+            {{>record}}
+        {{/each}}
+    </div>
+</div>
+
+<div class="directory-group edit">
+    <input type="text" name="surname" placeholder="Type surname here...">
+    <input type="text" name="number" placeholder="Type number here...">
+</div>
+
+<div class="controls-wrapper-add">
+    <div class="directory-group-add">
+        <a onclick="addRecord()">Add</a>
+    </div>
+    <div class="directory-group-add">
+        <a onclick="{{cancel}}">Cancel</a>
+    </div>
+</div>

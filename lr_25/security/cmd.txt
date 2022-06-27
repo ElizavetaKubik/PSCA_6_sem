@@ -1,0 +1,23 @@
+cd C:\Program Files\Git\usr\bin
+openssl genrsa -des3 -out D:\University\University_1\6_new\PSCA\lr_25\security\CA-LAB25-KEV.key 2048
+kev
+openssl req -x509 -new -key D:\University\University_1\6_new\PSCA\lr_25\security\key.key -days 700 -sha256 -out D:\University\University_1\6_new\PSCA\lr_25\security\CA-LAB25-KEV.crt
+kevkev
+openssl genrsa -out D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.key 2048
+openssl req -new -key D:\University\University_1\6_new\PSCA\lr_25\security\key.key -out D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.csr -sha256 -config D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.cfg
+openssl x509 -req -in D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.csr -CA D:\University\University_1\6_new\PSCA\lr_25\security\CA-LAB25-KEV.crt -CAkey D:\University\University_1\6_new\PSCA\lr_25\security\key.key -CAcreateserial -out D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.crt -days 365 -sha256 -extensions v3_req -extfile D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.cfg
+kevkev
+mmc
+add to trusted
+c:\windows\system32\drivers\etc\hosts
+..
+Когда я - ресурс
+
+1. openssl req -new -key D:\University\University_1\6_new\PSCA\lr_25\security\key.key -out D:\University\University_1\6_new\PSCA\lr_25\security\RS-LAB25-KEV.csr -sha256 -config D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.cfg
+2. Отправить csr и принять сертификаты
+
+
+Когда я - CA
+
+1. openssl req -x509 -new -key D:\University\University_1\6_new\PSCA\lr_25\security\key.key -days 700 -sha256 -out D:\University\University_1\6_new\PSCA\lr_25\security\CA-LAB25-KEV.crt
+2. openssl x509 -req -in D:\University\University_1\6_new\PSCA\lr_25\files\RS-LAB25-KDV.csr -CA D:\University\University_1\6_new\PSCA\lr_25\security\CA-LAB25-KEV.crt -CAkey D:\University\University_1\6_new\PSCA\lr_25\security\key.key -CAcreateserial -out D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KDV.crt -days 365 -sha256 -extensions v3_req -extfile D:\University\University_1\6_new\PSCA\lr_25\security\LAB25-KEV.cfg

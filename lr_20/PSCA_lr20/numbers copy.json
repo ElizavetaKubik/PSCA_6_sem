@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "surname": "anya",
+    "number": "1111111"
+  },
+  {
+    "id": 1,
+    "surname": "petya",
+    "number": "2222222"
+  },
+  {
+    "id": 2,
+    "surname": "olya",
+    "number": "3333333"
+  },
+  {
+    "id": 4,
+    "surname": "kolya",
+    "number": "4444444"
+  }
+]
